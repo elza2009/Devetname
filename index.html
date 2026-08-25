@@ -4,23 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Elzanın Dəvətnaməsi</title>
-    <!-- Google Fonts-dan zərif şriftləri yükləyirik -->
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
     <style>
-        /* Səhifənin ümumi stili */
         body, html {
             margin: 0;
             padding: 0;
             height: 100%;
             overflow: hidden;
             font-family: 'Poppins', sans-serif;
-            background-color: #fdfaf5; /* Krem rəngli fon */
+            background-color: #fdfaf5;
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        /* Dəvətnamə kartının konteyneri */
         .invitation-card {
             background-color: #fff;
             width: 90%;
@@ -33,20 +30,17 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center; /* Ortaya yığmaq üçün dəyişdirildi */
             padding: 40px;
             text-align: center;
             overflow: hidden;
-            border: 2px solid #e0c9a6; /* Qızılı çərçivə */
+            border: 2px solid #e0c9a6;
             box-sizing: border-box;
-
-            /* Animasiyanın başlanğıc halı: görünməz və aşağıda */
             opacity: 0;
             transform: translateY(50px);
             animation: cardAppear 1.5s ease-out forwards;
         }
 
-        /* Kartın görünmə animasiyası */
         @keyframes cardAppear {
             to {
                 opacity: 1;
@@ -54,7 +48,6 @@
             }
         }
 
-        /* Arxa fondakı zərif naxış (şəkildəki sütunlara bənzər) */
         .invitation-card::before {
             content: '';
             position: absolute;
@@ -62,53 +55,38 @@
             left: -50px;
             right: -50px;
             bottom: -50px;
-            background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png'); /* Kağız fakturası */
+            background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
             opacity: 0.3;
             z-index: -1;
         }
 
-        /* Üst hissədəki qızılı naxış */
-        .top-ornament {
-            width: 100px;
-            height: auto;
-            margin-bottom: 10px;
-        }
-
-        /* "Dəvətlisiniz" başlığı */
         .title {
             font-family: 'Great Vibes', cursive;
             font-size: 48px;
-            color: #b38b5d; /* Tünd qızılı */
-            margin: 0 0 20px 0;
-            
-            /* Başlıq üçün fade-in animasiyası */
+            color: #b38b5d;
+            margin: 0 0 30px 0;
             opacity: 0;
             animation: fadeIn 1s ease-in 1s forwards;
         }
 
-        /* Elzanın adı */
         .name {
             font-family: 'Playfair Display', serif;
             font-size: 36px;
             font-weight: 700;
             color: #333;
-            margin-bottom: 10px;
-            
+            margin-bottom: 15px;
             opacity: 0;
             animation: fadeIn 1s ease-in 1.5s forwards;
         }
 
-        /* Universitet və ixtisas məlumatı */
         .details {
             font-size: 18px;
             color: #666;
-            margin-bottom: 30px;
-            
+            margin-bottom: 40px;
             opacity: 0;
             animation: fadeIn 1s ease-in 2s forwards;
         }
 
-        /* Tarix bloku */
         .date-box {
             display: flex;
             gap: 15px;
@@ -116,10 +94,9 @@
             border-top: 1px solid #e0c9a6;
             border-bottom: 1px solid #e0c9a6;
             padding: 15px 0;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
             width: 100%;
             justify-content: center;
-            
             opacity: 0;
             animation: fadeIn 1s ease-in 2.5s forwards;
         }
@@ -142,18 +119,15 @@
             font-size: 18px;
         }
 
-        /* Məkan məlumatı */
         .venue {
             font-size: 18px;
             color: #333;
             font-weight: bold;
-            margin-bottom: 30px;
-            
+            margin-bottom: 40px;
             opacity: 0;
             animation: fadeIn 1s ease-in 3s forwards;
         }
 
-        /* "Qəbul Et" düyməsi */
         .btn-rsvp {
             display: inline-block;
             padding: 12px 30px;
@@ -165,7 +139,6 @@
             text-transform: uppercase;
             box-shadow: 0 4px 15px rgba(179, 139, 93, 0.4);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            
             opacity: 0;
             animation: fadeIn 1s ease-in 3.5s forwards;
         }
@@ -175,82 +148,44 @@
             box-shadow: 0 6px 20px rgba(179, 139, 93, 0.6);
         }
 
-        /* Künclərdəki güllər */
-        .flower {
-            position: absolute;
-            width: 120px;
-            height: auto;
-            opacity: 0.8;
-            z-index: 0;
-        }
-
-        .flower-top-left {
-            top: -20px;
-            left: -20px;
-            transform: rotate(-15deg);
-        }
-
-        .flower-bottom-right {
-            bottom: -20px;
-            right: -20px;
-            transform: rotate(165deg);
-        }
-
-        /* Ümumi fade-in animasiyası */
         @keyframes fadeIn {
             to { opacity: 1; }
         }
 
-        /* Mobil cihazlar üçün uyğunlaşdırma */
         @media (max-height: 700px) {
             .invitation-card { padding: 20px; }
             .title { font-size: 36px; }
-            .name { font-size: 28px; }
+            .name { font-size: 28px; margin-bottom: 10px; }
             .day-number { font-size: 36px; }
+            .details { margin-bottom: 20px; }
+            .venue { margin-bottom: 20px; }
         }
     </style>
 </head>
 <body>
 
     <div class="invitation-card">
-        <!-- Künc gülləri (Simvolik şəkillər, real güllər üçün URL-ləri dəyişə bilərsən) -->
-        <img src="https://i.imgur.com/8F6vF8H.png" alt="Flower Decor" class="flower flower-top-left">
-        <img src="https://i.imgur.com/8F6vF8H.png" alt="Flower Decor" class="flower flower-bottom-right">
-
-        <!-- Üst Naxış -->
-        <img src="https://i.imgur.com/W2C0N0u.png" alt="Ornament" class="top-ornament">
-
-        <!-- Başlıq -->
         <h1 class="title">Dəvətlisiniz</h1>
-
-        <!-- İsim -->
         <div class="name">Elza Vəlizadə</div>
-
-        <!-- Təhsil Məlumatı -->
         <div class="details">BMU - Biotexnologiya 2026</div>
 
-        <!-- Tarix -->
         <div class="date-box">
             <div class="day-name">Çərşənbə</div>
             <div class="day-number">01</div>
             <div class="month-year">sentyabr<br>2026</div>
         </div>
 
-        <!-- Məkan -->
         <div class="venue">
             Ankara restoran
         </div>
 
-        <!-- RSVP Düyməsi -->
-        <a href="https://wa.me/994XXXXXXXXX?text=Mən%20gəlirəm!" class="btn-rsvp">Qəbul Et</a>
+        <a href="https://wa.me/994515205237?text=Tebriklerr%20Geleciyiyy!" class="btn-rsvp">Qəbul Et</a>
     </div>
 
     <script>
-        // Səhifə yükləndikdə yüngül bir parıltı effekti əlavə edirik
         document.addEventListener('DOMContentLoaded', () => {
             const card = document.querySelector('.invitation-card');
             
-            // Kartın üzərinə gəldikdə yaranan animasiya (CSS ilə də edilə bilərdi, amma JS istədiyin üçün bura əlavə etdim)
             card.addEventListener('mouseover', () => {
                 card.style.boxShadow = '0 15px 40px rgba(179, 139, 93, 0.2)';
             });
