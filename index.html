@@ -3,197 +3,247 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elzanın Dəvətnaməsi</title>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+    <title>Dəvətnamə | Elza Vəlizadə</title>
+    <!-- Şəkildəki yazı tiplərinə ən uyğun Google Fontları -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        body, html {
+        * {
             margin: 0;
             padding: 0;
-            height: 100%;
-            overflow: hidden;
-            font-family: 'Poppins', sans-serif;
-            background-color: #fdfaf5;
+            box-sizing: border-box;
+        }
+
+        body {
+            /* BURA TƏMİZ ARXA FON ŞƏKLİNİN ADINI YAZ (yazısız versiya) */
+            background: url('arxa-fon.jpg') no-repeat center center/cover;
+            background-color: #fcf9f2; /* Şəkil yüklənməyəndə görünəcək krem rəng */
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
+            font-family: 'Playfair Display', serif;
+            color: #1a1a1a;
+            overflow-x: hidden;
         }
 
+        /* Əsas Dəvətnamə Kartı (Davamlı Zərif Animasiya) */
         .invitation-card {
-            background-color: #fff;
-            width: 90%;
-            max-width: 450px;
-            height: 90%;
-            max-height: 750px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center; /* Ortaya yığmaq üçün dəyişdirildi */
-            padding: 40px;
             text-align: center;
-            overflow: hidden;
-            border: 2px solid #e0c9a6;
-            box-sizing: border-box;
-            opacity: 0;
-            transform: translateY(50px);
-            animation: cardAppear 1.5s ease-out forwards;
+            padding: 40px 20px;
+            max-width: 500px;
+            width: 100%;
+            /* Davamlı nəfəs alma animasiyası */
+            animation: floating 4s ease-in-out infinite; 
         }
 
-        @keyframes cardAppear {
+        /* Elementlərin tək-tək səhifəyə daxil olma animasiyası */
+        .animate-item {
+            opacity: 0;
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        /* Gecikmələr (Sırayla gəlməsi üçün) */
+        .delay-1 { animation-delay: 0.3s; }
+        .delay-2 { animation-delay: 0.6s; }
+        .delay-3 { animation-delay: 0.9s; }
+        .delay-4 { animation-delay: 1.2s; }
+        .delay-5 { animation-delay: 1.5s; }
+        .delay-6 { animation-delay: 1.8s; }
+
+        /* Məzuniyyət Papağı İkonu */
+        .grad-icon {
+            font-size: 50px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        /* Əsas Başlıqlar (Great Vibes şrifti ilə əl yazısı forması) */
+        h1.title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4.5rem;
+            font-weight: 400;
+            margin-bottom: 5px;
+            color: #111;
+        }
+
+        h2.name {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.8rem;
+            font-weight: 400;
+            margin: 15px 0;
+            color: #111;
+        }
+
+        h3.university {
+            font-size: 1.5rem;
+            font-style: italic;
+            margin: 20px 0;
+            font-weight: 400;
+        }
+
+        /* Bəzəkli Xəttlər (Separator) */
+        .separator {
+            font-size: 24px;
+            margin: 10px 0;
+            color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .separator::before, .separator::after {
+            content: '';
+            width: 60px;
+            height: 1px;
+            background-color: #333;
+            margin: 0 10px;
+        }
+
+        /* Tarix Bölməsi */
+        .date-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .date-part {
+            font-size: 1.2rem;
+            line-height: 1.3;
+        }
+
+        .date-day {
+            font-size: 3rem;
+            font-weight: 600;
+        }
+
+        .date-divider {
+            width: 1px;
+            height: 50px;
+            background-color: #333;
+        }
+
+        /* Məkan */
+        .location-text {
+            font-size: 1.4rem;
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+
+        /* Konum (Google Maps) Düyməsi */
+        .location-btn {
+            display: inline-block;
+            background-color: #3e2723; /* Tünd qəhvəyi, dizayna uyğun */
+            color: white;
+            text-decoration: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            /* Düymənin özünün döyünmə animasiyası */
+            animation: pulseBtn 2s infinite;
+        }
+
+        .location-btn:hover {
+            background-color: #5d4037;
+            transform: scale(1.05);
+        }
+
+        .location-btn i {
+            margin-right: 8px;
+        }
+
+        /* Keyframes - Animasiyalar */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
 
-        .invitation-card::before {
-            content: '';
-            position: absolute;
-            top: -50px;
-            left: -50px;
-            right: -50px;
-            bottom: -50px;
-            background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
-            opacity: 0.3;
-            z-index: -1;
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
         }
 
-        .title {
-            font-family: 'Great Vibes', cursive;
-            font-size: 48px;
-            color: #b38b5d;
-            margin: 0 0 30px 0;
-            opacity: 0;
-            animation: fadeIn 1s ease-in 1s forwards;
+        @keyframes pulseBtn {
+            0% { box-shadow: 0 0 0 0 rgba(62, 39, 35, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(62, 39, 35, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(62, 39, 35, 0); }
         }
 
-        .name {
-            font-family: 'Playfair Display', serif;
-            font-size: 36px;
-            font-weight: 700;
-            color: #333;
-            margin-bottom: 15px;
-            opacity: 0;
-            animation: fadeIn 1s ease-in 1.5s forwards;
-        }
-
-        .details {
-            font-size: 18px;
-            color: #666;
-            margin-bottom: 40px;
-            opacity: 0;
-            animation: fadeIn 1s ease-in 2s forwards;
-        }
-
-        .date-box {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-            border-top: 1px solid #e0c9a6;
-            border-bottom: 1px solid #e0c9a6;
-            padding: 15px 0;
-            margin-bottom: 30px;
-            width: 100%;
-            justify-content: center;
-            opacity: 0;
-            animation: fadeIn 1s ease-in 2.5s forwards;
-        }
-
-        .day-name {
-            font-weight: bold;
-            font-size: 18px;
-        }
-
-        .day-number {
-            font-size: 48px;
-            font-weight: 700;
-            color: #b38b5d;
-            border-left: 1px solid #e0c9a6;
-            border-right: 1px solid #e0c9a6;
-            padding: 0 15px;
-        }
-
-        .month-year {
-            font-size: 18px;
-        }
-
-        .venue {
-            font-size: 18px;
-            color: #333;
-            font-weight: bold;
-            margin-bottom: 40px;
-            opacity: 0;
-            animation: fadeIn 1s ease-in 3s forwards;
-        }
-
-        .btn-rsvp {
-            display: inline-block;
-            padding: 12px 30px;
-            background: linear-gradient(45deg, #e0c9a6, #b38b5d);
-            color: white;
-            text-decoration: none;
-            border-radius: 25px;
-            font-weight: bold;
-            text-transform: uppercase;
-            box-shadow: 0 4px 15px rgba(179, 139, 93, 0.4);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            opacity: 0;
-            animation: fadeIn 1s ease-in 3.5s forwards;
-        }
-
-        .btn-rsvp:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(179, 139, 93, 0.6);
-        }
-
-        @keyframes fadeIn {
-            to { opacity: 1; }
-        }
-
-        @media (max-height: 700px) {
-            .invitation-card { padding: 20px; }
-            .title { font-size: 36px; }
-            .name { font-size: 28px; margin-bottom: 10px; }
-            .day-number { font-size: 36px; }
-            .details { margin-bottom: 20px; }
-            .venue { margin-bottom: 20px; }
+        /* Mobil Uyğunlaşdırma */
+        @media (max-width: 480px) {
+            h1.title { font-size: 3.5rem; }
+            h2.name { font-size: 3rem; }
+            h3.university { font-size: 1.2rem; }
+            .date-day { font-size: 2.5rem; }
+            .date-part { font-size: 1rem; }
         }
     </style>
 </head>
 <body>
 
     <div class="invitation-card">
-        <h1 class="title">Dəvətlisiniz</h1>
-        <div class="name">Elza Vəlizadə</div>
-        <div class="details">BMU - Biotexnologiya 2026</div>
-
-        <div class="date-box">
-            <div class="day-name">Çərşənbə</div>
-            <div class="day-number">01</div>
-            <div class="month-year">sentyabr<br>2026</div>
+        
+        <!-- Papaq İkonu -->
+        <div class="animate-item delay-1">
+            <i class="fa-solid fa-graduation-cap grad-icon"></i>
         </div>
 
-        <div class="venue">
-            Ankara restoran
+        <!-- Dəvətlisiniz -->
+        <h1 class="title animate-item delay-2">Dəvətlisiniz</h1>
+
+        <!-- Bəzək -->
+        <div class="separator animate-item delay-3">
+            <i class="fa-solid fa-leaf" style="font-size: 14px;"></i>
         </div>
 
-        <a href="https://wa.me/994515205237?text=Tebriklerr%20Geleciyiyy!" class="btn-rsvp">Qəbul Et</a>
+        <!-- Ad Soyad -->
+        <h2 class="name animate-item delay-3">Elza Vəlizadə</h2>
+
+        <!-- Bəzək -->
+        <div class="separator animate-item delay-4">
+            <i class="fa-solid fa-leaf" style="font-size: 14px;"></i>
+        </div>
+
+        <!-- İxtisas -->
+        <h3 class="university animate-item delay-4">BMU-Biotexnologiya 2026</h3>
+
+        <!-- Tarix Quruluşu (Şəkildəki kimi) -->
+        <div class="date-container animate-item delay-5">
+            <div class="date-part">Çərşənbə</div>
+            <div class="date-divider"></div>
+            <div class="date-day">01</div>
+            <div class="date-divider"></div>
+            <div class="date-part">sentyabr<br>2026</div>
+        </div>
+
+        <!-- Bəzək -->
+        <div class="separator animate-item delay-6">
+            <i class="fa-solid fa-leaf" style="font-size: 14px;"></i>
+        </div>
+
+        <!-- Məkan Adı -->
+        <div class="location-text animate-item delay-6">Ankara restoran</div>
+
+        <!-- Google Maps Düyməsi (Bura xəritə linkini qoy) -->
+        <div class="animate-item delay-6" style="margin-top: 20px;">
+            <a href="https://maps.app.goo.gl/BURAYA_GOOGL_MAPS_LINKINI_YAZ" target="_blank" class="location-btn">
+                <i class="fa-solid fa-location-dot"></i> Məkanın Konumu
+            </a>
+        </div>
+
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const card = document.querySelector('.invitation-card');
-            
-            card.addEventListener('mouseover', () => {
-                card.style.boxShadow = '0 15px 40px rgba(179, 139, 93, 0.2)';
-            });
-
-            card.addEventListener('mouseout', () => {
-                card.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
-            });
-        });
-    </script>
 </body>
 </html>
