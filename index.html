@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dəvətnamə | Elza Vəlizadə</title>
-    <!-- Şəkildəki yazı tiplərinə ən uyğun Google Fontları -->
+    <!-- Google Fonts & FontAwesome İkonları -->
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -16,9 +16,8 @@
         }
 
         body {
-            /* BURA TƏMİZ ARXA FON ŞƏKLİNİN ADINI YAZ (yazısız versiya) */
-            background: url('arxa-fon.jpg.JPG') no-repeat center center/cover;
-            background-color: #fcf9f2; /* Şəkil yüklənməyəndə görünəcək krem rəng */
+            /* Şəkilsiz - Krem rəngi və zərli/qızılı parıltı effekti */
+            background: radial-gradient(circle at center, #fffdf8 0%, #f7efe2 50%, #eae0d0 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -26,142 +25,181 @@
             font-family: 'Playfair Display', serif;
             color: #1a1a1a;
             overflow-x: hidden;
+            position: relative;
         }
 
-        /* Əsas Dəvətnamə Kartı (Davamlı Zərif Animasiya) */
+        /* Zərli parıltı fakturası (CSS effekti) */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: radial-gradient(#d4af37 0.75px, transparent 0.75px);
+            background-size: 24px 24px;
+            opacity: 0.18;
+            pointer-events: none;
+        }
+
+        /* Dəvətnamə Kartı */
         .invitation-card {
             text-align: center;
-            padding: 40px 20px;
-            max-width: 500px;
-            width: 100%;
-            /* Davamlı nəfəs alma animasiyası */
+            padding: 45px 30px;
+            max-width: 480px;
+            width: 90%;
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(8px);
+            border-radius: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.15), 0 5px 15px rgba(0, 0, 0, 0.05);
             animation: floating 4s ease-in-out infinite; 
         }
 
-        /* Elementlərin tək-tək səhifəyə daxil olma animasiyası */
+        /* Elementlərin animasiya ilə gəlməsi */
         .animate-item {
             opacity: 0;
             animation: fadeInUp 1s ease-out forwards;
         }
 
-        /* Gecikmələr (Sırayla gəlməsi üçün) */
-        .delay-1 { animation-delay: 0.3s; }
-        .delay-2 { animation-delay: 0.6s; }
-        .delay-3 { animation-delay: 0.9s; }
-        .delay-4 { animation-delay: 1.2s; }
-        .delay-5 { animation-delay: 1.5s; }
-        .delay-6 { animation-delay: 1.8s; }
+        /* ANİMASİYA GİRİŞ SIRALAMASI: */
+        .delay-1 { animation-delay: 0.2s; } /* 1. Dəvətlisiniz */
+        .delay-2 { animation-delay: 0.6s; } /* 2. Məzuniyyət Papağı */
+        .delay-3 { animation-delay: 1.0s; } /* 3. Elza Vəlizadə */
+        .delay-4 { animation-delay: 1.3s; } /* İxtisas */
+        .delay-5 { animation-delay: 1.6s; } /* Tarix və Saat */
+        .delay-6 { animation-delay: 1.9s; } /* Məkan & Konum Düyməsi */
 
-        /* Məzuniyyət Papağı İkonu */
-        .grad-icon {
-            font-size: 50px;
-            color: #333;
-            margin-bottom: 10px;
-        }
-
-        /* Əsas Başlıqlar (Great Vibes şrifti ilə əl yazısı forması) */
+        /* Dəvətlisiniz Yazısı */
         h1.title {
             font-family: 'Great Vibes', cursive;
             font-size: 4.5rem;
             font-weight: 400;
+            color: #2b2b2b;
             margin-bottom: 5px;
-            color: #111;
         }
 
+        /* Papaq İkonu */
+        .grad-icon {
+            font-size: 44px;
+            color: #d4af37;
+            margin: 10px 0;
+            filter: drop-shadow(0 2px 4px rgba(212, 175, 55, 0.3));
+        }
+
+        /* Ad Soyad */
         h2.name {
             font-family: 'Great Vibes', cursive;
             font-size: 3.8rem;
             font-weight: 400;
-            margin: 15px 0;
-            color: #111;
+            margin: 10px 0;
+            color: #1a1a1a;
         }
 
         h3.university {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-style: italic;
-            margin: 20px 0;
+            margin: 15px 0;
             font-weight: 400;
+            color: #4a4a4a;
         }
 
-        /* Bəzəkli Xəttlər (Separator) */
+        /* Zərli separator xətti */
         .separator {
-            font-size: 24px;
+            font-size: 18px;
             margin: 10px 0;
-            color: #333;
+            color: #d4af37;
             display: flex;
             align-items: center;
             justify-content: center;
         }
         .separator::before, .separator::after {
             content: '';
-            width: 60px;
+            width: 50px;
             height: 1px;
-            background-color: #333;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
             margin: 0 10px;
         }
 
-        /* Tarix Bölməsi */
-        .date-container {
+        /* Yenilənmiş Tarix və Saat Bloku */
+        .event-info {
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            gap: 15px;
-            margin: 30px 0;
+            gap: 12px;
+            margin: 25px 0;
+            padding: 15px;
+            border-top: 1px dashed rgba(212, 175, 55, 0.4);
+            border-bottom: 1px dashed rgba(212, 175, 55, 0.4);
         }
 
-        .date-part {
-            font-size: 1.2rem;
+        .date-badge {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .date-num {
+            font-size: 2.8rem;
+            font-weight: 600;
+            color: #d4af37;
+            line-height: 1;
+        }
+
+        .date-details {
+            text-align: left;
+            font-size: 1.1rem;
             line-height: 1.3;
         }
 
-        .date-day {
-            font-size: 3rem;
+        /* Saat Qutusu */
+        .time-badge {
+            font-size: 1.1rem;
             font-weight: 600;
+            color: #333;
+            background: rgba(212, 175, 55, 0.15);
+            padding: 6px 20px;
+            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
         }
 
-        .date-divider {
-            width: 1px;
-            height: 50px;
-            background-color: #333;
-        }
-
-        /* Məkan */
         .location-text {
-            font-size: 1.4rem;
-            margin-top: 20px;
-            margin-bottom: 30px;
+            font-size: 1.35rem;
+            margin-top: 15px;
+            margin-bottom: 25px;
+            font-weight: 600;
+            color: #2b2b2b;
         }
 
-        /* Konum (Google Maps) Düyməsi */
+        /* Google Maps Düyməsi */
         .location-btn {
             display: inline-block;
-            background-color: #3e2723; /* Tünd qəhvəyi, dizayna uyğun */
+            background: linear-gradient(135deg, #d4af37 0%, #aa820a 100%);
             color: white;
             text-decoration: none;
             padding: 12px 30px;
             border-radius: 30px;
             font-family: 'Playfair Display', serif;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             transition: 0.3s;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            /* Düymənin özünün döyünmə animasiyası */
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
             animation: pulseBtn 2s infinite;
         }
 
         .location-btn:hover {
-            background-color: #5d4037;
             transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.6);
         }
 
         .location-btn i {
             margin-right: 8px;
         }
 
-        /* Keyframes - Animasiyalar */
+        /* Keyframe Animasiyaları */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(40px);
+                transform: translateY(35px);
             }
             to {
                 opacity: 1;
@@ -171,23 +209,21 @@
 
         @keyframes floating {
             0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+            50% { transform: translateY(-8px); }
             100% { transform: translateY(0px); }
         }
 
         @keyframes pulseBtn {
-            0% { box-shadow: 0 0 0 0 rgba(62, 39, 35, 0.4); }
-            70% { box-shadow: 0 0 0 15px rgba(62, 39, 35, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(62, 39, 35, 0); }
+            0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.5); }
+            70% { box-shadow: 0 0 0 15px rgba(212, 175, 55, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
         }
 
-        /* Mobil Uyğunlaşdırma */
         @media (max-width: 480px) {
-            h1.title { font-size: 3.5rem; }
-            h2.name { font-size: 3rem; }
-            h3.university { font-size: 1.2rem; }
-            .date-day { font-size: 2.5rem; }
-            .date-part { font-size: 1rem; }
+            h1.title { font-size: 3.8rem; }
+            h2.name { font-size: 3.2rem; }
+            h3.university { font-size: 1.15rem; }
+            .date-num { font-size: 2.3rem; }
         }
     </style>
 </head>
@@ -195,50 +231,44 @@
 
     <div class="invitation-card">
         
-        <!-- Papaq İkonu -->
-        <div class="animate-item delay-1">
+        <!-- 1. DƏVƏTLİSİNİZ (İLK GƏLİR) -->
+        <h1 class="title animate-item delay-1">Dəvətlisiniz</h1>
+
+        <!-- 2. PAPAQ İKONU (İKİNCİ GƏLİR) -->
+        <div class="animate-item delay-2">
             <i class="fa-solid fa-graduation-cap grad-icon"></i>
         </div>
 
-        <!-- Dəvətlisiniz -->
-        <h1 class="title animate-item delay-2">Dəvətlisiniz</h1>
-
-        <!-- Bəzək -->
-        <div class="separator animate-item delay-3">
-            <i class="fa-solid fa-leaf" style="font-size: 14px;"></i>
-        </div>
-
-        <!-- Ad Soyad -->
+        <!-- 3. ELZA VƏLİZADƏ (ÜÇÜNCÜ GƏLİR) -->
         <h2 class="name animate-item delay-3">Elza Vəlizadə</h2>
 
-        <!-- Bəzək -->
-        <div class="separator animate-item delay-4">
-            <i class="fa-solid fa-leaf" style="font-size: 14px;"></i>
-        </div>
-
         <!-- İxtisas -->
+        <div class="separator animate-item delay-4">
+            <i class="fa-solid fa-star" style="font-size: 10px;"></i>
+        </div>
         <h3 class="university animate-item delay-4">BMU-Biotexnologiya 2026</h3>
 
-        <!-- Tarix Quruluşu (Şəkildəki kimi) -->
-        <div class="date-container animate-item delay-5">
-            <div class="date-part">Çərşənbə</div>
-            <div class="date-divider"></div>
-            <div class="date-day">01</div>
-            <div class="date-divider"></div>
-            <div class="date-part">sentyabr<br>2026</div>
+        <!-- Tarix və Saat (Yenilənmiş dizayn) -->
+        <div class="event-info animate-item delay-5">
+            <div class="date-badge">
+                <span class="date-num">01</span>
+                <div class="date-details">
+                    <div><b>Sentyabr 2026</b></div>
+                    <div style="color: #666; font-size: 0.95rem;">Çərşənbə günü</div>
+                </div>
+            </div>
+            
+            <!-- Əlavə olunmuş Saat -->
+            <div class="time-badge">
+                <i class="fa-regular fa-clock"></i> Saat: 18:00
+            </div>
         </div>
 
-        <!-- Bəzək -->
-        <div class="separator animate-item delay-6">
-            <i class="fa-solid fa-leaf" style="font-size: 14px;"></i>
-        </div>
-
-        <!-- Məkan Adı -->
+        <!-- Məkan və Konum -->
         <div class="location-text animate-item delay-6">Ankara restoran</div>
 
-        <!-- Google Maps Düyməsi (Bura xəritə linkini qoy) -->
-        <div class="animate-item delay-6" style="margin-top: 20px;">
-            <a href="https://maps.app.goo.gl/BURAYA_GOOGL_MAPS_LINKINI_YAZ" target="_blank" class="location-btn">
+        <div class="animate-item delay-6">
+            <a href="https://maps.app.goo.gl/https://maps.app.goo.gl/X5Ag81YLk1cgCfdX7?g_st=ic" target="_blank" class="location-btn">
                 <i class="fa-solid fa-location-dot"></i> Məkanın Konumu
             </a>
         </div>
